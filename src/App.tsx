@@ -75,17 +75,20 @@ return (
       { ( lose ) ? <h2>You Lose! - Palabra: { word } </h2> : '' }
       { ( won ) ? <h2>You Win! Marco siempre es el mejor</h2> : '' }
 
-      {
-          letters.map( (letter) => (
-            <button 
-              onClick={ () => checkLetter(letter) }
-              key={letter}
-              disabled={lose || won}  
-            >
-              { letter }
-            </button>
-          ) )
-      }
+     {/* Envuelve los botones en este div para que no salgan en vertical */}
+<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '600px' }}>
+  {
+    letters.map( (letter) => (
+      <button 
+        onClick={ () => checkLetter(letter) }
+        key={letter}
+        disabled={lose || won}  
+      >
+        { letter }
+      </button>
+    ) )
+  }
+</div>
 
       <br /><br />
       <button onClick={ newGame } >¿Quieres volver a Jugar?</button>

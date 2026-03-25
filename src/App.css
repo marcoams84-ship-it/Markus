@@ -1,8 +1,9 @@
-/* Esto asegura que TODA la página y el fondo de las imágenes sean iguales */
+/* Color exacto de tu imagen para que no haya marcos */
 body, html, #root {
-  background-color: #1a1a1a; /* El color estándar de Vite oscuro, cámbialo si usas otro */
+  background-color: #121214 !important; 
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .counter {
@@ -27,22 +28,26 @@ body, html, #root {
 .hero {
   position: relative;
   z-index: 1;
-  height: 100vh;
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  overflow: hidden;
+  
+  /* Esto subirá el juego si lo ves muy abajo */
+  padding-bottom: 50px; 
+  box-sizing: border-box;
+  
+  /* Unificamos el fondo aquí también */
+  background-color: #121214;
 }
 
-/* El dibujo del ahorcado ahora es más grande y nítido */
 .hang-drawing {
-  width: 350px; /* Antes era 200 */
+  width: 320px; /* Tamaño equilibrado */
   height: auto;
-  filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); /* Le da profundidad */
   z-index: 2;
+  margin-top: -20px; /* Lo sube un poquito */
 }
 
 .watermark {
@@ -50,10 +55,14 @@ body, html, #root {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1200px; /* ¡SUPER GIGANTE! */
-  filter: grayscale(100%) contrast(110%) brightness(1.2);
-  mix-blend-mode: screen; 
-  opacity: 0.1; /* Bajamos un poco para que no distraiga al ser tan grande */
+  width: 100vw; /* Ocupa todo el ancho de la pantalla */
+  max-width: 1400px;
+  
+  /* Filtros para que se mezcle perfecto */
+  filter: grayscale(100%) brightness(0.8) contrast(1.2);
+  mix-blend-mode: lighten; /* <--- Prueba 'lighten' si 'screen' fallaba */
+  opacity: 0.15;
+  
   z-index: -1;
   pointer-events: none;
 }

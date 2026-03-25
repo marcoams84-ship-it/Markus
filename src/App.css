@@ -1,46 +1,31 @@
-/* FONDO GENERAL */
 body, html, #root {
-  background-color: #121214 !important;
+  background-color: #1a1a1a;
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  width: 100%;
   color: white;
-  overflow-y: auto; /* Permite bajar con el ratón o el dedo */
+  font-family: Arial, sans-serif;
+  overflow-y: auto; /* Permite bajar para ver el botón de reinicio */
 }
 
-/* SELLO DE AUDRY AL FONDO */
-.watermark {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  max-width: 80vw;
-  mix-blend-mode: screen;
-  opacity: 0.1;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* CONTENEDOR PRINCIPAL */
 .hero {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
-  z-index: 10;
-  gap: 10px;
+  gap: 15px;
+  min-height: 100vh;
+  text-align: center;
 }
 
-/* EL DIBUJO (Tamaño seguro para que no choque arriba) */
 .hang-drawing {
-  width: 200px; /* Tamaño pequeño pero seguro */
+  width: 200px;
   height: auto;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
-/* TUS BOTONES VERDES DE SIEMPRE */
 button {
   all: unset;
   background: #4caf50;
@@ -53,9 +38,11 @@ button {
   cursor: pointer;
   display: inline-block;
   box-shadow: 0 4px 0 #2e7d32;
+  transition: transform 0.1s ease;
 }
 
+button:hover { background: #43a047; }
 button:active { transform: translateY(2px); box-shadow: 0 2px 0 #2e7d32; }
-button:disabled { background: #555; box-shadow: none; opacity: 0.5; }
+button:disabled { background: #555; box-shadow: none; opacity: 0.5; cursor: not-allowed; }
 
-h3, h2 { text-align: center; margin: 10px 0; }
+h2, h3 { margin: 10px 0; }

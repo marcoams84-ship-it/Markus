@@ -18,17 +18,14 @@ interface Props {
     imageNumber: number;
 }
 
-export function HangImage( { imageNumber }: Props ) {
-    if ( imageNumber >= 9 ) {
-        imageNumber = 9;
-    }
+export function HangImage({ imageNumber }: Props) {
+    if (imageNumber >= 9) imageNumber = 9;
 
     return (
         <img 
-            src={ images[imageNumber] } 
+            src={images[imageNumber]} 
             alt="Hang image" 
             className="hang-drawing" 
         />
     );
-} // <--- ESTA LLAVE FALTABA Y POR ESO SALÍA EN ROJO
-
+}

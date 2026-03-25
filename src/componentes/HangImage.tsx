@@ -35,10 +35,9 @@ export function HangImage( { imageNumber }: Props ) {
 
     return (
         <img 
-        src={ images[imageNumber] } 
-        alt="Hang image" 
-        style={{ width: 200, height: 250 }}
+            src={ images[imageNumber] } 
+            alt="Hang image" 
+            className="hang-drawing" 
         />
-    ); // JSX Element
-
+    ); 
 }

@@ -1,3 +1,10 @@
+/* Esto asegura que TODA la página y el fondo de las imágenes sean iguales */
+body, html, #root {
+  background-color: #1a1a1a; /* El color estándar de Vite oscuro, cámbialo si usas otro */
+  margin: 0;
+  padding: 0;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -17,49 +24,38 @@
   }
 }
 
+.hero {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+}
+
+/* El dibujo del ahorcado ahora es más grande y nítido */
+.hang-drawing {
+  width: 350px; /* Antes era 200 */
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); /* Le da profundidad */
+  z-index: 2;
+}
+
 .watermark {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  /* --- TAMAÑO GIGANTE --- */
-  width: 900px; 
-  
-  /* --- EFECTO "SIN MARCO" --- */
-  filter: grayscale(100%) contrast(120%);
-  mix-blend-mode: screen; /* <--- Esto hace que el fondo negro de la foto desaparezca */
-  opacity: 0.15; 
-  
+  width: 1200px; /* ¡SUPER GIGANTE! */
+  filter: grayscale(100%) contrast(110%) brightness(1.2);
+  mix-blend-mode: screen; 
+  opacity: 0.1; /* Bajamos un poco para que no distraiga al ser tan grande */
   z-index: -1;
   pointer-events: none;
-}
-
-.hero {
-  position: relative;
-  z-index: 1;
-  
-  /* Forzamos el alto exacto de la pantalla */
-  height: 100vh; 
-  width: 100%;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Centro vertical */
-  
-  /* REDUCIMOS UN POCO EL TAMAÑO PARA QUE FLOTE MEJOR */
-  transform: scale(0.85); 
-  transform-origin: center;
-  
-  gap: 10px; 
-  overflow: hidden;
-  text-align: center;
-}
-/* Quitamos márgenes automáticos de los títulos y el dibujo */
-.hero h3, .hero h2, .hero img:not(.watermark) {
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 /* 4. Otros elementos del sitio */

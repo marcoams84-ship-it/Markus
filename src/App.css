@@ -29,56 +29,53 @@ body, html, #root {
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 100vh; /* Forzamos el alto exacto de la pantalla */
   
-  /* Esto subirá el juego si lo ves muy abajo */
-  padding-bottom: 50px; 
-  box-sizing: border-box;
+  /* --- CAMBIO CRÍTICO: Usamos CSS Grid para un centrado perfecto --- */
+  display: grid; 
+  place-items: center; /* Centrado perfecto horizontal y vertical */
   
   /* Unificamos el fondo aquí también */
-  background-color: #121214;
+  background-color: #121214; /* Tu color gris oscuro exacto */
+  overflow: hidden; /* <--- Esto matará cualquier barra de desplazamiento */
 }
 
 .hang-drawing {
   width: 320px; /* Tamaño equilibrado */
   height: auto;
-  z-index: 2;
-  margin-top: -20px; /* Lo sube un poquito */
+  z-index: 2; /* Encima del sello */
+  
+  /* --- FORZAMOS QUE NO TENGA MÁRGENES QUE LO MUEVAN --- */
+  margin: 0 !important;
+  display: block; /* Ayuda a la alineación */
 }
 
+
 .watermark {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw; /* Ocupa todo el ancho de la pantalla */
-  max-width: 1400px;
-  
-  /* Filtros para que se mezcle perfecto */
+  width: 900px; 
+  max-width: 90vw;
   filter: grayscale(100%) brightness(0.8) contrast(1.2);
-  mix-blend-mode: lighten; /* <--- Prueba 'lighten' si 'screen' fallaba */
-  opacity: 0.15;
-  
-  z-index: -1;
+  mix-blend-mode: lighten; 
+  opacity: 0.12;
+  z-index: -1; 
   pointer-events: none;
 }
 
-/* 4. Otros elementos del sitio */
-#next-steps {
-  display: flex;
+/* --- LIMPIEZA: Aquí borramos el código roto que causaba la línea blanca --- */
+
+#spacer {
+  height: 88px;
   border-top: 1px solid var(--border);
-  text-align: left;
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) { padding: 24px 20px; }
-  }
-  .icon { margin-bottom: 16px; width: 22px; height: 22px; }
-  @media (max-width: 1024px) { flex-direction: column; text-align: center; }
+  @media (max-width: 1024px) { height: 48px; }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
 }
 
 #docs {

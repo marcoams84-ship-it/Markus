@@ -85,7 +85,7 @@
   height: 100%;
   
   /* Configuración de la imagen */
-  background-image: url('../assets/Audry.png'); 
+  background-image: url('/Audry.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 300px; /* Si la ves muy chica, sube este número */

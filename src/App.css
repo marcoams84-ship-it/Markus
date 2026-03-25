@@ -41,11 +41,11 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  place-items: center; 
+  justify-content: center; /* <--- Esto es lo que falta para bajar el juego al medio */
   gap: 15px; 
   overflow: hidden;
-  text-align: center; /* Asegura que los textos h3 también se centren */
+  text-align: center;
 }
 
 /* 4. Otros elementos del sitio */

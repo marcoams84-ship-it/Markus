@@ -62,40 +62,28 @@ function App() {
     setWon(false);
   }
   
-  return (
+return (
     <div className="hero">
+      <img src="/Audry.png" className="watermark" alt="" />
       
-      {/* Imagenes */}
       <HangImage imageNumber={ attempts } />
 
-      {/* Palabra oculta */}
       <h3> { hiddenWord } </h3>
 
-      {/* Contador de intentos */}
       <h3>Intentos: { attempts }</h3>
 
-      {
-        ( lose ) 
-        ? <h2>You Lose! - Palabra: { word } </h2>
-        :''
-      }
+      { ( lose ) ? <h2>You Lose! - Palabra: { word } </h2> : '' }
+      { ( won ) ? <h2>You Win! Marco siempre es el mejor</h2> : '' }
 
-      {
-        ( won ) 
-        ? <h2>You Win! Marco siempre es el mejor</h2>
-        :''
-      }
-
-      {/* Botones de letras */}
       {
           letters.map( (letter) => (
             <button 
-            onClick={ () => checkLetter(letter) }
-            key={letter}
-             disabled={lose || won}  
+              onClick={ () => checkLetter(letter) }
+              key={letter}
+              disabled={lose || won}  
             >
               { letter }
-              </button>
+            </button>
           ) )
       }
 
@@ -103,10 +91,8 @@ function App() {
       <button onClick={ newGame } >¿Quieres volver a Jugar?</button>
 
     </div>
-
   );
+} // <--- ESTA LLAVE ES LA QUE TE FALTA
 
-  
-};
+export default App;
 
-export default App

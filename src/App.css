@@ -1,72 +1,61 @@
-/* 1. Fondo y Base */
+/* FONDO GENERAL */
 body, html, #root {
   background-color: #121214 !important;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden; /* Elimina la línea blanca */
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  color: white;
+  overflow-y: auto; /* Permite bajar con el ratón o el dedo */
 }
 
-/* 2. El Sello de Audry (Fondo) */
+/* SELLO DE AUDRY AL FONDO */
 .watermark {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 800px; /* Bajamos un poco el tamaño para que no pese visualmente */
-  max-width: 90vw;
-  filter: grayscale(100%) brightness(0.7);
-  mix-blend-mode: screen; 
-  opacity: 0.12;
+  width: 600px;
+  max-width: 80vw;
+  mix-blend-mode: screen;
+  opacity: 0.1;
   z-index: 0;
   pointer-events: none;
 }
 
-/* 3. Contenedor del Juego (Ajustado para que quepa todo) */
+/* CONTENEDOR PRINCIPAL */
 .hero {
   position: relative;
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
+  padding: 20px;
   z-index: 10;
-  gap: 10px; /* Reducimos el espacio entre elementos para que el botón suba */
+  gap: 10px;
 }
 
-/* 4. El Dibujo del Ahorcado (Ajustamos tamaño para ganar espacio) */
+/* EL DIBUJO (Tamaño seguro para que no choque arriba) */
 .hang-drawing {
-  width: 280px !important; /* Lo hacemos un pelín más pequeño para que el botón aparezca */
+  width: 200px; /* Tamaño pequeño pero seguro */
   height: auto;
-  margin-bottom: 0;
+  margin-top: 10px;
 }
 
-/* 5. Textos */
-h2, h3 {
-  color: white;
-  margin: 2px 0;
-  text-align: center;
-}
-
-/* 6. Botones (Tus botones verdes originales) */
+/* TUS BOTONES VERDES DE SIEMPRE */
 button {
   all: unset;
   background: #4caf50;
   color: white;
   border-radius: 8px;
-  padding: 8px 12px;
-  margin: 3px;
-  font-size: 15px;
+  padding: 10px 14px;
+  margin: 4px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   display: inline-block;
-  transition: all 0.1s ease;
   box-shadow: 0 4px 0 #2e7d32;
 }
 
-button:hover { background: #43a047; }
-button:active { transform: translateY(4px); box-shadow: 0 0 0 #2e7d32; }
-button:disabled { background: #9e9e9e; box-shadow: none; cursor: not-allowed; opacity: 0.6; }
+button:active { transform: translateY(2px); box-shadow: 0 2px 0 #2e7d32; }
+button:disabled { background: #555; box-shadow: none; opacity: 0.5; }
+
+h3, h2 { text-align: center; margin: 10px 0; }

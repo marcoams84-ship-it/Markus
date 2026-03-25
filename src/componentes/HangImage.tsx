@@ -1,4 +1,3 @@
-
 import image0 from '../assets/0.png';
 import image1 from '../assets/1.png';
 import image2 from '../assets/2.png';
@@ -11,16 +10,8 @@ import image8 from '../assets/8.png';
 import image9 from '../assets/9.png';
 
 let images: string[] = [
-    image0,
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-    image9,
+    image0, image1, image2, image3, image4,
+    image5, image6, image7, image8, image9,
 ];
 
 interface Props {
@@ -28,7 +19,6 @@ interface Props {
 }
 
 export function HangImage( { imageNumber }: Props ) {
-
     if ( imageNumber >= 9 ) {
         imageNumber = 9;
     }
@@ -39,5 +29,6 @@ export function HangImage( { imageNumber }: Props ) {
             alt="Hang image" 
             className="hang-drawing" 
         />
-    ); 
-}
+    );
+} // <--- ESTA LLAVE FALTABA Y POR ESO SALÍA EN ROJO
+

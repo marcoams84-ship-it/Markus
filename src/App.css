@@ -17,57 +17,30 @@
   }
 }
 
+/* 1. Dibujo del ahorcado */
 .hero {
   position: relative;
+  z-index: 2;
 
-  .base,
-  .framework,
-  .vite {
+  .base, .framework, .vite {
     inset-inline: 0;
     margin: 0 auto;
   }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+  .base { width: 170px; position: relative; z-index: 0; }
+  .framework, .vite { position: absolute; }
+  .framework { z-index: 1; top: 34px; height: 28px; transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.4); }
+  .vite { z-index: 0; top: 107px; height: 26px; width: auto; transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.8); }
 }
 
-
+/* 2. El contenedor del juego */
 #center {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 25px;
   place-content: center;
   place-items: center;
   flex-grow: 1;
-  
-  /* ESTO ES LO NUEVO: Prepara el terreno para el sello */
-  position: relative; 
+  position: relative;
 
   @media (max-width: 1024px) {
     padding: 32px 20px 24px;
@@ -75,63 +48,39 @@
   }
 }
 
-/* ESTO ES EL SELLO DE AUDRY: Pégalo justo aquí debajo */
+/* 3. EL SELLO DE AUDRY */
 #center::before {
-  content: "";
-  position: absolute; /* Se estira dentro de #center */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  /* Configuración de la imagen */
-  background-image: url('/Audry.png');
+  content: ""; 
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('../assets/Audry.png'); 
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 300px; /* Si la ves muy chica, sube este número */
-  
-  /* Efecto Sello de Agua (Gris y transparente) */
+  background-size: 300px;
   filter: grayscale(100%); 
-  opacity: 0.1; /* 0.05 es muy suave, prueba 0.1 si no la ves */
-  
-  /* Capas y clics */
+  opacity: 0.2 !important; 
+  display: block !important;
   z-index: -1; 
-  pointer-events: none; 
+  pointer-events: none;
 }
 
-
+/* 4. Otros elementos del sitio */
 #next-steps {
   display: flex;
   border-top: 1px solid var(--border);
   text-align: left;
-
   & > div {
     flex: 1 1 0;
     padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
+    @media (max-width: 1024px) { padding: 24px 20px; }
   }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  .icon { margin-bottom: 16px; width: 22px; height: 22px; }
+  @media (max-width: 1024px) { flex-direction: column; text-align: center; }
 }
 
 #docs {
   border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+  @media (max-width: 1024px) { border-right: none; border-bottom: 1px solid var(--border); }
 }
 
 #next-steps ul {
@@ -140,11 +89,7 @@
   display: flex;
   gap: 8px;
   margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
+  .logo { height: 18px; }
   a {
     color: var(--text-h);
     font-size: 16px;
@@ -156,69 +101,35 @@
     gap: 8px;
     text-decoration: none;
     transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
+    &:hover { box-shadow: var(--shadow); }
+    .button-icon { height: 18px; width: 18px; }
   }
-
   @media (max-width: 1024px) {
     margin-top: 20px;
     flex-wrap: wrap;
     justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
+    li { flex: 1 1 calc(50% - 8px); }
+    a { width: 100%; justify-content: center; box-sizing: border-box; }
   }
 }
 
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+  @media (max-width: 1024px) { height: 48px; }
 }
 
 .ticks {
   position: relative;
   width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-
+  &::before, &::after { content: ''; position: absolute; top: -4.5px; border: 5px solid transparent; }
+  &::before { left: 0; border-left-color: var(--border); }
+  &::after { right: 0; border-right-color: var(--border); }
 }
 
 /* ================= BOTONES DEL JUEGO ================= */
-
 button {
   all: unset;
-
   background: #4caf50;
   color: white;
   border-radius: 10px;
@@ -227,35 +138,13 @@ button {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-
   display: inline-block;
-
   transition: all 0.1s ease;
   box-shadow: 0 4px 0 #2e7d32;
 }
 
-/* Hover */
-button:hover {
-  background: #43a047;
-}
-
-/* Click */
-button:active {
-  transform: translateY(4px);
-  box-shadow: 0 0 0 #2e7d32;
-}
-
-/* Deshabilitado */
-button:disabled {
-  background: #9e9e9e;
-  box-shadow: none;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* Focus */
-button:focus-visible {
-  outline: 2px solid yellow;
-}
-
+button:hover { background: #43a047; }
+button:active { transform: translateY(4px); box-shadow: 0 0 0 #2e7d32; }
+button:disabled { background: #9e9e9e; box-shadow: none; cursor: not-allowed; opacity: 0.6; }
+button:focus-visible { outline: 2px solid yellow; }
 
